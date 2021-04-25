@@ -24,7 +24,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
+//import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 @SuppressLint("ApplySharedPref")
 public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlugin {
@@ -40,11 +40,17 @@ public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlu
 
     private static final String ELEMENT_PREFERENCES_KEY_PREFIX = "VGhpcyBpcyB0aGUgcHJlZml4IGZvciBhIHNlY3VyZSBzdG9yYWdlCg";
     private static final String SHARED_PREFERENCES_NAME = "FlutterSecureStorage";
+    
+    @SuppressWarnings("deprecation")
+    public static void registerWith(io.flutter.plugin.common.PluginRegistry.Registrar registrar) {
+    FlutterSecureStoragePlugin instance = new FlutterSecureStoragePlugin();
+    instance.initInstance(registrar.messenger(), registrar.context());
+    }
 
-    public static void registerWith(Registrar registrar) {
+/*    public static void registerWith(Registrar registrar) {
       FlutterSecureStoragePlugin instance = new FlutterSecureStoragePlugin();
       instance.initInstance(registrar.messenger(), registrar.context());
-    }
+    } */
 
     public void initInstance(BinaryMessenger messenger, Context context) {
       try {
